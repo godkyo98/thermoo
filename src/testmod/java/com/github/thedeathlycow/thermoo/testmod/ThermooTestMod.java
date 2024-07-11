@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.thermoo.testmod;
 
+import com.github.thedeathlycow.thermoo.api.armor.material.ArmorMaterialEvents;
 import com.github.thedeathlycow.thermoo.api.temperature.event.EnvironmentControllerInitializeEvent;
 import com.github.thedeathlycow.thermoo.api.temperature.event.PlayerEnvironmentEvents;
 import com.github.thedeathlycow.thermoo.impl.Thermoo;
@@ -35,6 +36,9 @@ public class ThermooTestMod implements ModInitializer {
                         }
                 );
         EnvironmentControllerInitializeEvent.EVENT.register(TestmodController::new);
+
+        ArmorMaterialEvents.GET_FROST_RESISTANCE.register(ArmorMaterialListener.COLD);
+        ArmorMaterialEvents.GET_HEAT_RESISTANCE.register(ArmorMaterialListener.HEAT);
     }
 
     public static ThermooConfig getConfig() {
