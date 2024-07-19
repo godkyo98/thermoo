@@ -17,21 +17,21 @@ public enum ThermalResistanceType {
     COLD(
             ArmorMaterialEvents.GET_FROST_RESISTANCE,
             ThermooAttributes.FROST_RESISTANCE,
-            Thermoo.id("armor.frost_resistance")
+            "armor.frost_resistance"
     ),
     HEAT(
             ArmorMaterialEvents.GET_HEAT_RESISTANCE,
             ThermooAttributes.HEAT_RESISTANCE,
-            Thermoo.id("armor.heat_resistance")
+            "armor.heat_resistance"
     );
     private final Event<ArmorMaterialEvents.GetResistance> event;
     private final RegistryEntry<EntityAttribute> attribute;
-    private final Identifier modifierId;
+    private final String modifierId;
 
     ThermalResistanceType(
             Event<ArmorMaterialEvents.GetResistance> event,
             RegistryEntry<EntityAttribute> attribute,
-            Identifier modifierId
+            String modifierId
     ) {
         this.event = event;
         this.attribute = attribute;
@@ -49,7 +49,7 @@ public enum ThermalResistanceType {
             builder.add(
                     attribute,
                     new EntityAttributeModifier(
-                            this.modifierId,
+                            Thermoo.id(this.modifierId + "." + type.getName()),
                             resistanceValue,
                             EntityAttributeModifier.Operation.ADD_VALUE
                     ),
