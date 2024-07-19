@@ -23,7 +23,7 @@ import static net.minecraft.server.command.CommandManager.literal;
  * Usage:
  * <p>
  * {@code thermoo environment checktemperature <args>}
- *
+ * <p>
  * {@code thermoo environment printcontroller}
  */
 public class EnvironmentCommand {
@@ -155,7 +155,7 @@ public class EnvironmentCommand {
                         location.getX(),
                         location.getY(),
                         location.getZ(),
-                        biome == null ? "unknown" : biome.getValue(),
+                        biome == null ? "unknown" : biome.getValue().toString(),
                         temperatureChange
                 ),
                 false
@@ -186,7 +186,7 @@ public class EnvironmentCommand {
                         location.getX(),
                         location.getY(),
                         location.getZ(),
-                        biome == null ? "unknown" : biome.getValue(),
+                        biome == null ? "unknown" : biome.getValue().toString(),
                         String.format("%.2f", temperature),
                         unit.getUnitSymbol()
                 ),
